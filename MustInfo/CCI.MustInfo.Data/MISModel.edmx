@@ -1,0 +1,1676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MISModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="MISModelStoreContainer">
+    <EntitySet Name="Books" EntityType="MISModel.Store.Books" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Products" EntityType="MISModel.Store.Products" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Positions" EntityType="MISModel.Store.Positions" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Assets" EntityType="MISModel.Store.Assets" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Trades" EntityType="MISModel.Store.Trades" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="PaymentDiaries" EntityType="MISModel.Store.PaymentDiaries" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="CashTransactions" EntityType="MISModel.Store.CashTransactions" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="ProductGroups" EntityType="MISModel.Store.ProductGroups" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="ProductSubGroups" EntityType="MISModel.Store.ProductSubGroups" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Entities" EntityType="MISModel.Store.Entities" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="MarketDatas" EntityType="MISModel.Store.MarketDatas" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Calendars" EntityType="MISModel.Store.Calendars" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Blocks" EntityType="MISModel.Store.Blocks" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="CurrencyHistories" EntityType="MISModel.Store.CurrencyHistories" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="MarketDatas_Price" EntityType="MISModel.Store.MarketDatas_Price" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Entities_Counterparty" EntityType="MISModel.Store.Entities_Counterparty" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="MarketDatas_Index" EntityType="MISModel.Store.MarketDatas_Index" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="MarketDatas_Currency" EntityType="MISModel.Store.MarketDatas_Currency" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Assets_Collateral" EntityType="MISModel.Store.Assets_Collateral" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="MarketDatas_Curve" EntityType="MISModel.Store.MarketDatas_Curve" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Trades_RepoTrade" EntityType="MISModel.Store.Trades_RepoTrade" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Trades_SecurityTrade" EntityType="MISModel.Store.Trades_SecurityTrade" store:Type="Tables" Schema="mis" />
+    <EntitySet Name="Trades_FutureTrade" EntityType="MISModel.Store.Trades_FutureTrade" store:Type="Tables" Schema="mis" />
+    <AssociationSet Name="LegalEntityBook" Association="MISModel.Store.LegalEntityBook">
+      <End Role="LegalEntity" EntitySet="Entities" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="ProductGroupProductSubGroup" Association="MISModel.Store.ProductGroupProductSubGroup">
+      <End Role="ProductGroup" EntitySet="ProductGroups" />
+      <End Role="ProductSubGroup" EntitySet="ProductSubGroups" />
+    </AssociationSet>
+    <AssociationSet Name="ProductSubGroupProduct" Association="MISModel.Store.ProductSubGroupProduct">
+      <End Role="ProductSubGroup" EntitySet="ProductSubGroups" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="AssetPrice" Association="MISModel.Store.AssetPrice">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Price" EntitySet="MarketDatas_Price" />
+    </AssociationSet>
+    <AssociationSet Name="AssetTrade" Association="MISModel.Store.AssetTrade">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Trade" EntitySet="Trades" />
+    </AssociationSet>
+    <AssociationSet Name="TradeCashTransaction" Association="MISModel.Store.TradeCashTransaction">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="CashTransaction" EntitySet="CashTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="TradePosition" Association="MISModel.Store.TradePosition">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="Position" EntitySet="Positions" />
+    </AssociationSet>
+    <AssociationSet Name="TradePaymentDiary" Association="MISModel.Store.TradePaymentDiary">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="PaymentDiary" EntitySet="PaymentDiaries" />
+    </AssociationSet>
+    <AssociationSet Name="ProductAsset" Association="MISModel.Store.ProductAsset">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="CounterpartyTrade" Association="MISModel.Store.CounterpartyTrade">
+      <End Role="Counterparty" EntitySet="Entities_Counterparty" />
+      <End Role="Trade" EntitySet="Trades" />
+    </AssociationSet>
+    <AssociationSet Name="IndexAsset" Association="MISModel.Store.IndexAsset">
+      <End Role="Index" EntitySet="MarketDatas_Index" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="CalendarEntity" Association="MISModel.Store.CalendarEntity">
+      <End Role="Calendar" EntitySet="Calendars" />
+      <End Role="Entity" EntitySet="Entities" />
+    </AssociationSet>
+    <AssociationSet Name="CurrencyEntity" Association="MISModel.Store.CurrencyEntity">
+      <End Role="Currency" EntitySet="MarketDatas_Currency" />
+      <End Role="Entity" EntitySet="Entities" />
+    </AssociationSet>
+    <AssociationSet Name="TradeCollateral" Association="MISModel.Store.TradeCollateral">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="Collateral" EntitySet="Assets_Collateral" />
+    </AssociationSet>
+    <AssociationSet Name="PositionBlock" Association="MISModel.Store.PositionBlock">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="Block" EntitySet="Blocks" />
+    </AssociationSet>
+    <AssociationSet Name="CurrencyCurrency" Association="MISModel.Store.CurrencyCurrency">
+      <End Role="Currency" EntitySet="MarketDatas_Currency" />
+      <End Role="Currency1" EntitySet="MarketDatas_Currency" />
+    </AssociationSet>
+    <AssociationSet Name="CurrencyCurrencyHistory" Association="MISModel.Store.CurrencyCurrencyHistory">
+      <End Role="Currency" EntitySet="MarketDatas_Currency" />
+      <End Role="CurrencyHistory" EntitySet="CurrencyHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Price_inherits_MarketData" Association="MISModel.Store.FK_Price_inherits_MarketData">
+      <End Role="MarketData" EntitySet="MarketDatas" />
+      <End Role="Price" EntitySet="MarketDatas_Price" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Counterparty_inherits_Entity" Association="MISModel.Store.FK_Counterparty_inherits_Entity">
+      <End Role="Entity" EntitySet="Entities" />
+      <End Role="Counterparty" EntitySet="Entities_Counterparty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Index_inherits_MarketData" Association="MISModel.Store.FK_Index_inherits_MarketData">
+      <End Role="MarketData" EntitySet="MarketDatas" />
+      <End Role="Index" EntitySet="MarketDatas_Index" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Currency_inherits_MarketData" Association="MISModel.Store.FK_Currency_inherits_MarketData">
+      <End Role="MarketData" EntitySet="MarketDatas" />
+      <End Role="Currency" EntitySet="MarketDatas_Currency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Collateral_inherits_Asset" Association="MISModel.Store.FK_Collateral_inherits_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Collateral" EntitySet="Assets_Collateral" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Curve_inherits_MarketData" Association="MISModel.Store.FK_Curve_inherits_MarketData">
+      <End Role="MarketData" EntitySet="MarketDatas" />
+      <End Role="Curve" EntitySet="MarketDatas_Curve" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RepoTrade_inherits_Trade" Association="MISModel.Store.FK_RepoTrade_inherits_Trade">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="RepoTrade" EntitySet="Trades_RepoTrade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SecurityTrade_inherits_Trade" Association="MISModel.Store.FK_SecurityTrade_inherits_Trade">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="SecurityTrade" EntitySet="Trades_SecurityTrade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FutureTrade_inherits_Trade" Association="MISModel.Store.FK_FutureTrade_inherits_Trade">
+      <End Role="Trade" EntitySet="Trades" />
+      <End Role="FutureTrade" EntitySet="Trades_FutureTrade" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CostCenter" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="BUCode" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LegalEntity_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="ProductSubGroup_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Trade_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="Index_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Trades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DealDate" Type="datetime" Nullable="false" />
+    <Property Name="SettlementDate" Type="datetime" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Asset_Id" Type="int" Nullable="false" />
+    <Property Name="ChildBook_Id" Type="int" Nullable="false" />
+    <Property Name="Counterparty_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PaymentDiaries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Trade_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CashTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Trade_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProductSubGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="ProductGroup_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="FullName" Type="varchar" Nullable="true" MaxLength="250" />
+    <Property Name="Document" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="DocumentType" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Alias" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Calendar_Id" Type="int" Nullable="true" />
+    <Property Name="Currency_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="MarketDatas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Calendars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Blocks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Info_Source" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_SourceId" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Info_LastUpdate" Type="datetime" Nullable="true" />
+    <Property Name="Position_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrencyHistories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Currency_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarketDatas_Price">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Asset_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entities_Counterparty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarketDatas_Index">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarketDatas_Currency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CurrencyCurrency_Currency_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assets_Collateral">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Trade_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MarketDatas_Curve">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades_RepoTrade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades_SecurityTrade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades_FutureTrade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="LegalEntityBook">
+    <End Role="LegalEntity" Type="MISModel.Store.Entities" Multiplicity="1" />
+    <End Role="Book" Type="MISModel.Store.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LegalEntity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="LegalEntity_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductGroupProductSubGroup">
+    <End Role="ProductGroup" Type="MISModel.Store.ProductGroups" Multiplicity="1" />
+    <End Role="ProductSubGroup" Type="MISModel.Store.ProductSubGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductSubGroup">
+        <PropertyRef Name="ProductGroup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductSubGroupProduct">
+    <End Role="ProductSubGroup" Type="MISModel.Store.ProductSubGroups" Multiplicity="1" />
+    <End Role="Product" Type="MISModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductSubGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductSubGroup_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AssetPrice">
+    <End Role="Asset" Type="MISModel.Store.Assets" Multiplicity="1" />
+    <End Role="Price" Type="MISModel.Store.MarketDatas_Price" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="Asset_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AssetTrade">
+    <End Role="Asset" Type="MISModel.Store.Assets" Multiplicity="1" />
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trade">
+        <PropertyRef Name="Asset_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TradeCashTransaction">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CashTransaction" Type="MISModel.Store.CashTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CashTransaction">
+        <PropertyRef Name="Trade_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TradePosition">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Position" Type="MISModel.Store.Positions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Position">
+        <PropertyRef Name="Trade_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TradePaymentDiary">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PaymentDiary" Type="MISModel.Store.PaymentDiaries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PaymentDiary">
+        <PropertyRef Name="Trade_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductAsset">
+    <End Role="Product" Type="MISModel.Store.Products" Multiplicity="1" />
+    <End Role="Asset" Type="MISModel.Store.Assets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CounterpartyTrade">
+    <End Role="Counterparty" Type="MISModel.Store.Entities_Counterparty" Multiplicity="0..1" />
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Counterparty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trade">
+        <PropertyRef Name="Counterparty_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IndexAsset">
+    <End Role="Index" Type="MISModel.Store.MarketDatas_Index" Multiplicity="0..1" />
+    <End Role="Asset" Type="MISModel.Store.Assets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Index">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="Index_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CalendarEntity">
+    <End Role="Calendar" Type="MISModel.Store.Calendars" Multiplicity="0..1" />
+    <End Role="Entity" Type="MISModel.Store.Entities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="Calendar_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrencyEntity">
+    <End Role="Currency" Type="MISModel.Store.MarketDatas_Currency" Multiplicity="0..1" />
+    <End Role="Entity" Type="MISModel.Store.Entities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entity">
+        <PropertyRef Name="Currency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TradeCollateral">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Collateral" Type="MISModel.Store.Assets_Collateral" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Collateral">
+        <PropertyRef Name="Trade_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PositionBlock">
+    <End Role="Position" Type="MISModel.Store.Positions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Block" Type="MISModel.Store.Blocks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Block">
+        <PropertyRef Name="Position_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrencyCurrency">
+    <End Role="Currency" Type="MISModel.Store.MarketDatas_Currency" Multiplicity="*" />
+    <End Role="Currency1" Type="MISModel.Store.MarketDatas_Currency" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Currency1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Currency">
+        <PropertyRef Name="CurrencyCurrency_Currency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CurrencyCurrencyHistory">
+    <End Role="Currency" Type="MISModel.Store.MarketDatas_Currency" Multiplicity="1" />
+    <End Role="CurrencyHistory" Type="MISModel.Store.CurrencyHistories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CurrencyHistory">
+        <PropertyRef Name="Currency_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Price_inherits_MarketData">
+    <End Role="MarketData" Type="MISModel.Store.MarketDatas" Multiplicity="1" />
+    <End Role="Price" Type="MISModel.Store.MarketDatas_Price" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MarketData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Price">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Counterparty_inherits_Entity">
+    <End Role="Entity" Type="MISModel.Store.Entities" Multiplicity="1" />
+    <End Role="Counterparty" Type="MISModel.Store.Entities_Counterparty" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Entity">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Counterparty">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Index_inherits_MarketData">
+    <End Role="MarketData" Type="MISModel.Store.MarketDatas" Multiplicity="1" />
+    <End Role="Index" Type="MISModel.Store.MarketDatas_Index" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MarketData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Index">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Currency_inherits_MarketData">
+    <End Role="MarketData" Type="MISModel.Store.MarketDatas" Multiplicity="1" />
+    <End Role="Currency" Type="MISModel.Store.MarketDatas_Currency" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MarketData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Currency">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Collateral_inherits_Asset">
+    <End Role="Asset" Type="MISModel.Store.Assets" Multiplicity="1" />
+    <End Role="Collateral" Type="MISModel.Store.Assets_Collateral" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Collateral">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Curve_inherits_MarketData">
+    <End Role="MarketData" Type="MISModel.Store.MarketDatas" Multiplicity="1" />
+    <End Role="Curve" Type="MISModel.Store.MarketDatas_Curve" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MarketData">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Curve">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RepoTrade_inherits_Trade">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1" />
+    <End Role="RepoTrade" Type="MISModel.Store.Trades_RepoTrade" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RepoTrade">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SecurityTrade_inherits_Trade">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1" />
+    <End Role="SecurityTrade" Type="MISModel.Store.Trades_SecurityTrade" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SecurityTrade">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FutureTrade_inherits_Trade">
+    <End Role="Trade" Type="MISModel.Store.Trades" Multiplicity="1" />
+    <End Role="FutureTrade" Type="MISModel.Store.Trades_FutureTrade" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Trade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FutureTrade">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MISModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="MISModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="MISModel.Book" />
+          <EntitySet Name="Products" EntityType="MISModel.Product" />
+          <EntitySet Name="Positions" EntityType="MISModel.Position" />
+          <EntitySet Name="Assets" EntityType="MISModel.Asset" />
+          <EntitySet Name="Trades" EntityType="MISModel.Trade" />
+          <EntitySet Name="PaymentDiaries" EntityType="MISModel.PaymentDiary" />
+          <EntitySet Name="CashTransactions" EntityType="MISModel.CashTransaction" />
+          <EntitySet Name="ProductGroups" EntityType="MISModel.ProductGroup" />
+          <EntitySet Name="ProductSubGroups" EntityType="MISModel.ProductSubGroup" />
+          <EntitySet Name="Entities" EntityType="MISModel.Entity" />
+          <AssociationSet Name="ProductGroupProductSubGroup" Association="MISModel.ProductGroupProductSubGroup">
+            <End Role="ProductGroup" EntitySet="ProductGroups" />
+            <End Role="ProductSubGroup" EntitySet="ProductSubGroups" />
+          </AssociationSet>
+          <AssociationSet Name="ProductSubGroupProduct" Association="MISModel.ProductSubGroupProduct">
+            <End Role="ProductSubGroup" EntitySet="ProductSubGroups" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="AssetPrice" Association="MISModel.AssetPrice">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Price" EntitySet="MarketDatas" />
+          </AssociationSet>
+          <AssociationSet Name="AssetTrade" Association="MISModel.AssetTrade">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Trade" EntitySet="Trades" />
+          </AssociationSet>
+          <AssociationSet Name="TradeCashTransaction" Association="MISModel.TradeCashTransaction">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="CashTransaction" EntitySet="CashTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="TradePosition" Association="MISModel.TradePosition">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="Position" EntitySet="Positions" />
+          </AssociationSet>
+          <AssociationSet Name="TradePaymentDiary" Association="MISModel.TradePaymentDiary">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="PaymentDiary" EntitySet="PaymentDiaries" />
+          </AssociationSet>
+          <AssociationSet Name="ProductAsset" Association="MISModel.ProductAsset">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Asset" EntitySet="Assets" />
+          </AssociationSet>
+          <EntitySet Name="MarketDatas" EntityType="MISModel.MarketData" />
+          <AssociationSet Name="CounterpartyTrade" Association="MISModel.CounterpartyTrade">
+            <End Role="Counterparty" EntitySet="Entities" />
+            <End Role="Trade" EntitySet="Trades" />
+          </AssociationSet>
+          <AssociationSet Name="IndexAsset" Association="MISModel.IndexAsset">
+            <End Role="Index" EntitySet="MarketDatas" />
+            <End Role="Asset" EntitySet="Assets" />
+          </AssociationSet>
+          <EntitySet Name="Calendars" EntityType="MISModel.Calendar" />
+          <AssociationSet Name="CalendarEntity" Association="MISModel.CalendarEntity">
+            <End Role="Calendar" EntitySet="Calendars" />
+            <End Role="Entity" EntitySet="Entities" />
+          </AssociationSet>
+          <AssociationSet Name="CurrencyEntity" Association="MISModel.CurrencyEntity">
+            <End Role="Currency" EntitySet="MarketDatas" />
+            <End Role="Entity" EntitySet="Entities" />
+          </AssociationSet>
+          <AssociationSet Name="TradeCollateral" Association="MISModel.TradeCollateral">
+            <End Role="Trade" EntitySet="Trades" />
+            <End Role="Collateral" EntitySet="Assets" />
+          </AssociationSet>
+          <EntitySet Name="Blocks" EntityType="MISModel.Block" />
+          <AssociationSet Name="PositionBlock" Association="MISModel.PositionBlock">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Block" EntitySet="Blocks" />
+          </AssociationSet>
+          <AssociationSet Name="CurrencyCurrency" Association="MISModel.CurrencyCurrency">
+            <End Role="Currency" EntitySet="MarketDatas" />
+            <End Role="Currency1" EntitySet="MarketDatas" />
+          </AssociationSet>
+          <EntitySet Name="CurrencyHistories" EntityType="MISModel.CurrencyHistory" />
+          <AssociationSet Name="CurrencyCurrencyHistory" Association="MISModel.CurrencyCurrencyHistory">
+            <End Role="Currency" EntitySet="MarketDatas" />
+            <End Role="CurrencyHistory" EntitySet="CurrencyHistories" />
+          </AssociationSet>
+          <EntitySet Name="Conglomerates" EntityType="MISModel.Conglomerate" />
+          <AssociationSet Name="ConglomerateEntity" Association="MISModel.ConglomerateEntity">
+            <End Role="Conglomerate" EntitySet="Conglomerates" />
+            <End Role="Entity" EntitySet="Entities" />
+          </AssociationSet>
+          <EntitySet Name="BusinessUnits" EntityType="MISModel.BusinessUnit" />
+          <AssociationSet Name="BusinessUnitBook" Association="MISModel.BusinessUnitBook">
+            <End Role="BusinessUnit" EntitySet="BusinessUnits" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <EntitySet Name="CostCenters" EntityType="MISModel.CostCenter" />
+          <AssociationSet Name="CostCenterBook" Association="MISModel.CostCenterBook">
+            <End Role="CostCenter" EntitySet="CostCenters" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="EntityCostCenter" Association="MISModel.EntityCostCenter">
+            <End Role="Entity" EntitySet="Entities" />
+            <End Role="CostCenter" EntitySet="CostCenters" />
+          </AssociationSet>
+          <EntitySet Name="Portfolios" EntityType="MISModel.Portfolio" />
+          <AssociationSet Name="PortfolioBook" Association="MISModel.PortfolioBook">
+            <End Role="Portfolio" EntitySet="Portfolios" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="PortfolioProduct" Association="MISModel.PortfolioProduct">
+            <End Role="Portfolio" EntitySet="Portfolios" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="BookTrade" Association="MISModel.BookTrade">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Trade" EntitySet="Trades" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" Unicode="false" />
+          <NavigationProperty Name="BusinessUnit" Relationship="MISModel.BusinessUnitBook" FromRole="Book" ToRole="BusinessUnit" />
+          <NavigationProperty Name="CostCenter" Relationship="MISModel.CostCenterBook" FromRole="Book" ToRole="CostCenter" />
+          <NavigationProperty Name="Portfolio" Relationship="MISModel.PortfolioBook" FromRole="Book" ToRole="Portfolio" />
+          <NavigationProperty Name="Trades" Relationship="MISModel.BookTrade" FromRole="Book" ToRole="Trade" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProductSubGroup" Relationship="MISModel.ProductSubGroupProduct" FromRole="Product" ToRole="ProductSubGroup" />
+          <NavigationProperty Name="Assets" Relationship="MISModel.ProductAsset" FromRole="Product" ToRole="Asset" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" Unicode="false" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+          <NavigationProperty Name="Portfolio" Relationship="MISModel.PortfolioProduct" FromRole="Product" ToRole="Portfolio" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Trade" Relationship="MISModel.TradePosition" FromRole="Position" ToRole="Trade" />
+          <NavigationProperty Name="Blocks" Relationship="MISModel.PositionBlock" FromRole="Position" ToRole="Block" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Price" BaseType="MISModel.MarketData">
+          <NavigationProperty Name="Asset" Relationship="MISModel.AssetPrice" FromRole="Price" ToRole="Asset" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Prices" Relationship="MISModel.AssetPrice" FromRole="Asset" ToRole="Price" />
+          <NavigationProperty Name="Trades" Relationship="MISModel.AssetTrade" FromRole="Asset" ToRole="Trade" />
+          <NavigationProperty Name="Product" Relationship="MISModel.ProductAsset" FromRole="Asset" ToRole="Product" />
+          <NavigationProperty Name="Index" Relationship="MISModel.IndexAsset" FromRole="Asset" ToRole="Index" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trade" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Asset" Relationship="MISModel.AssetTrade" FromRole="Trade" ToRole="Asset" />
+          <NavigationProperty Name="CashTransactions" Relationship="MISModel.TradeCashTransaction" FromRole="Trade" ToRole="CashTransaction" />
+          <NavigationProperty Name="Positions" Relationship="MISModel.TradePosition" FromRole="Trade" ToRole="Position" />
+          <NavigationProperty Name="PaymentDiaries" Relationship="MISModel.TradePaymentDiary" FromRole="Trade" ToRole="PaymentDiary" />
+          <Property Type="DateTime" Name="DealDate" Nullable="false" />
+          <NavigationProperty Name="Counterparty" Relationship="MISModel.CounterpartyTrade" FromRole="Trade" ToRole="Counterparty" />
+          <Property Type="DateTime" Name="SettlementDate" Nullable="false" />
+          <Property Type="Double" Name="Quantity" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <NavigationProperty Name="Collaterals" Relationship="MISModel.TradeCollateral" FromRole="Trade" ToRole="Collateral" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="MISModel.BookTrade" FromRole="Trade" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="PaymentDiary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Trade" Relationship="MISModel.TradePaymentDiary" FromRole="PaymentDiary" ToRole="Trade" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Trade" Relationship="MISModel.TradeCashTransaction" FromRole="CashTransaction" ToRole="Trade" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProductSubGroups" Relationship="MISModel.ProductGroupProductSubGroup" FromRole="ProductGroup" ToRole="ProductSubGroup" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" Unicode="false" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductSubGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProductGroup" Relationship="MISModel.ProductGroupProductSubGroup" FromRole="ProductSubGroup" ToRole="ProductGroup" />
+          <NavigationProperty Name="Products" Relationship="MISModel.ProductSubGroupProduct" FromRole="ProductSubGroup" ToRole="Product" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" Unicode="false" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Calendar" Relationship="MISModel.CalendarEntity" FromRole="Entity" ToRole="Calendar" />
+          <NavigationProperty Name="Currency" Relationship="MISModel.CurrencyEntity" FromRole="Entity" ToRole="Currency" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="250" Unicode="false" />
+          <Property Type="String" Name="Document" Nullable="true" Unicode="false" MaxLength="50" />
+          <Property Type="String" Name="DocumentType" Nullable="true" MaxLength="50" Unicode="false" />
+          <Property Type="String" Name="Alias" MaxLength="50" Unicode="false" Nullable="true" />
+          <NavigationProperty Name="Conglomerate" Relationship="MISModel.ConglomerateEntity" FromRole="Entity" ToRole="Conglomerate" />
+          <NavigationProperty Name="CostCenters" Relationship="MISModel.EntityCostCenter" FromRole="Entity" ToRole="CostCenter" />
+        </EntityType>
+        <ComplexType Name="Info" >
+          <Property Type="String" Name="Source" Nullable="true" MaxLength="50" Unicode="false" />
+          <Property Type="String" Name="SourceId" Nullable="true" MaxLength="50" Unicode="false" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="true" />
+        </ComplexType>
+        <Association Name="ProductGroupProductSubGroup">
+          <End Type="MISModel.ProductGroup" Role="ProductGroup" Multiplicity="1" />
+          <End Type="MISModel.ProductSubGroup" Role="ProductSubGroup" Multiplicity="*" />
+        </Association>
+        <Association Name="ProductSubGroupProduct">
+          <End Type="MISModel.ProductSubGroup" Role="ProductSubGroup" Multiplicity="1" />
+          <End Type="MISModel.Product" Role="Product" Multiplicity="*" />
+        </Association>
+        <Association Name="AssetPrice">
+          <End Type="MISModel.Asset" Role="Asset" Multiplicity="1" />
+          <End Type="MISModel.Price" Role="Price" Multiplicity="*" />
+        </Association>
+        <Association Name="AssetTrade">
+          <End Type="MISModel.Asset" Role="Asset" Multiplicity="1" />
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="*" />
+        </Association>
+        <Association Name="TradeCashTransaction">
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MISModel.CashTransaction" Role="CashTransaction" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="TradePosition">
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MISModel.Position" Role="Position" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="TradePaymentDiary">
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MISModel.PaymentDiary" Role="PaymentDiary" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="ProductAsset">
+          <End Type="MISModel.Product" Role="Product" Multiplicity="1" >
+          </End>
+          <End Type="MISModel.Asset" Role="Asset" Multiplicity="*" />
+        </Association>
+        <EntityType Name="MarketData" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" Unicode="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Currency" BaseType="MISModel.MarketData" >
+          <NavigationProperty Name="Entities" Relationship="MISModel.CurrencyEntity" FromRole="Currency" ToRole="Entity" />
+          <NavigationProperty Name="Parity" Relationship="MISModel.CurrencyCurrency" FromRole="Currency1" ToRole="Currency" />
+          <NavigationProperty Name="CurrencyHistories" Relationship="MISModel.CurrencyCurrencyHistory" FromRole="Currency" ToRole="CurrencyHistory" />
+        </EntityType>
+        <EntityType Name="Curve" BaseType="MISModel.MarketData" >
+        </EntityType>
+        <EntityType Name="Index" BaseType="MISModel.MarketData" >
+          <NavigationProperty Name="Assets" Relationship="MISModel.IndexAsset" FromRole="Index" ToRole="Asset" />
+        </EntityType>
+        <EntityType Name="Counterparty" BaseType="MISModel.Entity">
+          <NavigationProperty Name="Trades" Relationship="MISModel.CounterpartyTrade" FromRole="Counterparty" ToRole="Trade" />
+        </EntityType>
+        <Association Name="CounterpartyTrade">
+          <End Type="MISModel.Counterparty" Role="Counterparty" Multiplicity="0..1" />
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="*" />
+        </Association>
+        <Association Name="IndexAsset">
+          <End Type="MISModel.Index" Role="Index" Multiplicity="0..1" />
+          <End Type="MISModel.Asset" Role="Asset" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Entities" Relationship="MISModel.CalendarEntity" FromRole="Calendar" ToRole="Entity" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <Association Name="CalendarEntity">
+          <End Type="MISModel.Calendar" Role="Calendar" Multiplicity="0..1" />
+          <End Type="MISModel.Entity" Role="Entity" Multiplicity="*" />
+        </Association>
+        <Association Name="CurrencyEntity">
+          <End Type="MISModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="MISModel.Entity" Role="Entity" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Collateral" BaseType="MISModel.Asset">
+          <NavigationProperty Name="Trade" Relationship="MISModel.TradeCollateral" FromRole="Collateral" ToRole="Trade" />
+        </EntityType>
+        <Association Name="TradeCollateral">
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MISModel.Collateral" Role="Collateral" Multiplicity="*" >
+          </End>
+        </Association>
+        <EntityType Name="Block">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Position" Relationship="MISModel.PositionBlock" FromRole="Block" ToRole="Position" />
+          <Property Type="Double" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" Unicode="true" MaxLength="100" />
+          <Property Name="Info" Type="MISModel.Info" Nullable="false" />
+        </EntityType>
+        <Association Name="PositionBlock">
+          <End Type="MISModel.Position" Role="Position" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MISModel.Block" Role="Block" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="CurrencyCurrency">
+          <End Type="MISModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="MISModel.Currency" Role="Currency1" Multiplicity="1" />
+        </Association>
+        <EntityType Name="CurrencyHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Currency" Relationship="MISModel.CurrencyCurrencyHistory" FromRole="CurrencyHistory" ToRole="Currency" />
+        </EntityType>
+        <Association Name="CurrencyCurrencyHistory">
+          <End Type="MISModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="MISModel.CurrencyHistory" Role="CurrencyHistory" Multiplicity="*" />
+        </Association>
+        <EntityType Name="RepoTrade" BaseType="MISModel.Trade" />
+        <EntityType Name="SecurityTrade" BaseType="MISModel.Trade" />
+        <EntityType Name="FutureTrade" BaseType="MISModel.Trade" />
+        <EntityType Name="Conglomerate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Entities" Relationship="MISModel.ConglomerateEntity" FromRole="Conglomerate" ToRole="Entity" />
+        </EntityType>
+        <Association Name="ConglomerateEntity">
+          <End Type="MISModel.Conglomerate" Role="Conglomerate" Multiplicity="1" />
+          <End Type="MISModel.Entity" Role="Entity" Multiplicity="*" />
+        </Association>
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Books" Relationship="MISModel.BusinessUnitBook" FromRole="BusinessUnit" ToRole="Book" />
+        </EntityType>
+        <Association Name="BusinessUnitBook">
+          <End Type="MISModel.BusinessUnit" Role="BusinessUnit" Multiplicity="1" />
+          <End Type="MISModel.Book" Role="Book" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CostCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Books" Relationship="MISModel.CostCenterBook" FromRole="CostCenter" ToRole="Book" />
+          <NavigationProperty Name="Entity" Relationship="MISModel.EntityCostCenter" FromRole="CostCenter" ToRole="Entity" />
+        </EntityType>
+        <Association Name="CostCenterBook">
+          <End Type="MISModel.CostCenter" Role="CostCenter" Multiplicity="1" />
+          <End Type="MISModel.Book" Role="Book" Multiplicity="*" />
+        </Association>
+        <Association Name="EntityCostCenter">
+          <End Type="MISModel.Entity" Role="Entity" Multiplicity="1" />
+          <End Type="MISModel.CostCenter" Role="CostCenter" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Portfolio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Books" Relationship="MISModel.PortfolioBook" FromRole="Portfolio" ToRole="Book" />
+          <NavigationProperty Name="Products" Relationship="MISModel.PortfolioProduct" FromRole="Portfolio" ToRole="Product" />
+        </EntityType>
+        <Association Name="PortfolioBook">
+          <End Type="MISModel.Portfolio" Role="Portfolio" Multiplicity="1" />
+          <End Type="MISModel.Book" Role="Book" Multiplicity="*" />
+        </Association>
+        <Association Name="PortfolioProduct">
+          <End Type="MISModel.Portfolio" Role="Portfolio" Multiplicity="1" />
+          <End Type="MISModel.Product" Role="Product" Multiplicity="*" />
+        </Association>
+        <Association Name="BookTrade">
+          <End Type="MISModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="MISModel.Trade" Role="Trade" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MISModelStoreContainer" CdmEntityContainer="MISModelContainer">
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Book)">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Position)">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assets">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Asset)">
+        <MappingFragment StoreEntitySet="Assets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Collateral)">
+        <MappingFragment StoreEntitySet="Assets_Collateral">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trades">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Trade)">
+        <MappingFragment StoreEntitySet="Trades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DealDate" ColumnName="DealDate" />
+          <ScalarProperty Name="SettlementDate" ColumnName="SettlementDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.RepoTrade)">
+        <MappingFragment StoreEntitySet="Trades_RepoTrade">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.SecurityTrade)">
+        <MappingFragment StoreEntitySet="Trades_SecurityTrade">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.FutureTrade)">
+        <MappingFragment StoreEntitySet="Trades_FutureTrade">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentDiaries">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.PaymentDiary)">
+        <MappingFragment StoreEntitySet="PaymentDiaries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.CashTransaction)">
+        <MappingFragment StoreEntitySet="CashTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.ProductGroup)">
+        <MappingFragment StoreEntitySet="ProductGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSubGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.ProductSubGroup)">
+        <MappingFragment StoreEntitySet="ProductSubGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entities">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Entity)">
+        <MappingFragment StoreEntitySet="Entities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Document" ColumnName="Document" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Counterparty)">
+        <MappingFragment StoreEntitySet="Entities_Counterparty">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarketDatas">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.MarketData)">
+        <MappingFragment StoreEntitySet="MarketDatas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Price)">
+        <MappingFragment StoreEntitySet="MarketDatas_Price">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Index)">
+        <MappingFragment StoreEntitySet="MarketDatas_Index">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Currency)">
+        <MappingFragment StoreEntitySet="MarketDatas_Currency">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Curve)">
+        <MappingFragment StoreEntitySet="MarketDatas_Curve">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendars">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Calendar)">
+        <MappingFragment StoreEntitySet="Calendars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blocks">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.Block)">
+        <MappingFragment StoreEntitySet="Blocks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ComplexProperty Name="Info" TypeName="MISModel.Info">
+            <ScalarProperty Name="Source" ColumnName="Info_Source" />
+            <ScalarProperty Name="SourceId" ColumnName="Info_SourceId" />
+            <ScalarProperty Name="LastUpdate" ColumnName="Info_LastUpdate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyHistories">
+      <EntityTypeMapping TypeName="IsTypeOf(MISModel.CurrencyHistory)">
+        <MappingFragment StoreEntitySet="CurrencyHistories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductGroupProductSubGroup" TypeName="MISModel.ProductGroupProductSubGroup" StoreEntitySet="ProductSubGroups">
+      <EndProperty Name="ProductGroup">
+        <ScalarProperty Name="Id" ColumnName="ProductGroup_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductSubGroup">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductSubGroupProduct" TypeName="MISModel.ProductSubGroupProduct" StoreEntitySet="Products">
+      <EndProperty Name="ProductSubGroup">
+        <ScalarProperty Name="Id" ColumnName="ProductSubGroup_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AssetPrice" TypeName="MISModel.AssetPrice" StoreEntitySet="MarketDatas_Price">
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="Id" ColumnName="Asset_Id" />
+      </EndProperty>
+      <EndProperty Name="Price">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="AssetTrade" TypeName="MISModel.AssetTrade" StoreEntitySet="Trades">
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="Id" ColumnName="Asset_Id" />
+      </EndProperty>
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TradeCashTransaction" TypeName="MISModel.TradeCashTransaction" StoreEntitySet="CashTransactions">
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="Id" ColumnName="Trade_Id" />
+      </EndProperty>
+      <EndProperty Name="CashTransaction">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TradePosition" TypeName="MISModel.TradePosition" StoreEntitySet="Positions">
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="Id" ColumnName="Trade_Id" />
+      </EndProperty>
+      <EndProperty Name="Position">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TradePaymentDiary" TypeName="MISModel.TradePaymentDiary" StoreEntitySet="PaymentDiaries">
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="Id" ColumnName="Trade_Id" />
+      </EndProperty>
+      <EndProperty Name="PaymentDiary">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductAsset" TypeName="MISModel.ProductAsset" StoreEntitySet="Assets">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Product_Id" />
+      </EndProperty>
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CounterpartyTrade" TypeName="MISModel.CounterpartyTrade" StoreEntitySet="Trades">
+      <EndProperty Name="Counterparty">
+        <ScalarProperty Name="Id" ColumnName="Counterparty_Id" />
+      </EndProperty>
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Counterparty_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="IndexAsset" TypeName="MISModel.IndexAsset" StoreEntitySet="Assets">
+      <EndProperty Name="Index">
+        <ScalarProperty Name="Id" ColumnName="Index_Id" />
+      </EndProperty>
+      <EndProperty Name="Asset">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Index_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CalendarEntity" TypeName="MISModel.CalendarEntity" StoreEntitySet="Entities">
+      <EndProperty Name="Calendar">
+        <ScalarProperty Name="Id" ColumnName="Calendar_Id" />
+      </EndProperty>
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Calendar_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyEntity" TypeName="MISModel.CurrencyEntity" StoreEntitySet="Entities">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="Id" ColumnName="Currency_Id" />
+      </EndProperty>
+      <EndProperty Name="Entity">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Currency_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TradeCollateral" TypeName="MISModel.TradeCollateral" StoreEntitySet="Assets_Collateral">
+      <EndProperty Name="Trade">
+        <ScalarProperty Name="Id" ColumnName="Trade_Id" />
+      </EndProperty>
+      <EndProperty Name="Collateral">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PositionBlock" TypeName="MISModel.PositionBlock" StoreEntitySet="Blocks">
+      <EndProperty Name="Position">
+        <ScalarProperty Name="Id" ColumnName="Position_Id" />
+      </EndProperty>
+      <EndProperty Name="Block">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyCurrency" TypeName="MISModel.CurrencyCurrency" StoreEntitySet="MarketDatas_Currency">
+      <EndProperty Name="Currency1">
+        <ScalarProperty Name="Id" ColumnName="CurrencyCurrency_Currency_Id" />
+      </EndProperty>
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CurrencyCurrencyHistory" TypeName="MISModel.CurrencyCurrencyHistory" StoreEntitySet="CurrencyHistories">
+      <EndProperty Name="Currency">
+        <ScalarProperty Name="Id" ColumnName="Currency_Id" />
+      </EndProperty>
+      <EndProperty Name="CurrencyHistory">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DefaultDatabaseSchema" Value="mis" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="MISModel" ZoomLevel="29" >
+        <EntityTypeShape EntityType="MISModel.Book" Width="1.5" PointX="14.25" PointY="9.875" Height="2.2496956380208335" />
+        <EntityTypeShape EntityType="MISModel.Product" Width="1.5" PointX="1" PointY="10.5" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="MISModel.Position" Width="1.5" PointX="19.75" PointY="18.875" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="MISModel.Price" Width="1.5" PointX="5.75" PointY="20.5" Height="1.2636116536458353" />
+        <EntityTypeShape EntityType="MISModel.Asset" Width="1.5" PointX="12.75" PointY="16.5" Height="1.9210009765625031" />
+        <EntityTypeShape EntityType="MISModel.Trade" Width="1.5" PointX="15.375" PointY="17.875" Height="3.071432291666671" />
+        <EntityTypeShape EntityType="MISModel.PaymentDiary" Width="1.5" PointX="17.875" PointY="22.75" Height="1.4279589843750031" />
+        <EntityTypeShape EntityType="MISModel.CashTransaction" Width="1.5" PointX="17.875" PointY="21.125" Height="1.4279589843750031" />
+        <EntityTypeShape EntityType="MISModel.ProductGroup" Width="1.5" PointX="1" PointY="6.125" Height="1.5923063151041657" />
+        <EntityTypeShape EntityType="MISModel.ProductSubGroup" Width="1.5" PointX="1" PointY="8.25" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="MISModel.Entity" Width="1.5" PointX="14.25" PointY="6.25" Height="2.4140429687499996" />
+        <AssociationConnector Association="MISModel.ProductGroupProductSubGroup">
+          <ConnectorPoint PointX="1.75" PointY="7.7173063151041656" />
+          <ConnectorPoint PointX="1.75" PointY="8.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.ProductSubGroupProduct">
+          <ConnectorPoint PointX="1.75" PointY="10.006653645833334" />
+          <ConnectorPoint PointX="1.75" PointY="10.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.AssetPrice">
+          <ConnectorPoint PointX="13.195310375" PointY="18.421000976562503" />
+          <ConnectorPoint PointX="13.195310375" PointY="21" />
+          <ConnectorPoint PointX="7.25" PointY="21" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.AssetTrade">
+          <ConnectorPoint PointX="14.25" PointY="18.148000488281252" />
+          <ConnectorPoint PointX="15.375" PointY="18.148000488281252" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.TradeCashTransaction">
+          <ConnectorPoint PointX="16.875" PointY="19.410716145833334" />
+          <ConnectorPoint PointX="18.625" PointY="19.410716145833334" />
+          <ConnectorPoint PointX="18.625" PointY="21.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.TradePosition">
+          <ConnectorPoint PointX="16.875" PointY="20.001511230468751" />
+          <ConnectorPoint PointX="18.541666666666668" PointY="20.001511230468751" />
+          <ConnectorPoint PointX="18.708333333333332" PointY="20.001511230468751" />
+          <ConnectorPoint PointX="19.75" PointY="20.001511230468751" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.TradePaymentDiary" ManuallyRouted="false">
+          <ConnectorPoint PointX="16.125" PointY="20.946432291666671" />
+          <ConnectorPoint PointX="16.125" PointY="23.4639794921875" />
+          <ConnectorPoint PointX="17.875" PointY="23.4639794921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.ProductAsset" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.5" PointY="11.502098650716146" />
+          <ConnectorPoint PointX="6.1510429166666674" PointY="11.502098650716146" />
+          <ConnectorPoint PointX="6.3177095833333334" PointY="11.502098650716146" />
+          <ConnectorPoint PointX="13.46875" PointY="11.502098650716146" />
+          <ConnectorPoint PointX="13.46875" PointY="16.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.MarketData" Width="2.5" PointX="1" PointY="18" Height="1.4279589843750031" />
+        <InheritanceConnector EntityType="MISModel.Price" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="19.427958984375003" />
+          <ConnectorPoint PointX="2.25" PointY="20.125" />
+          <ConnectorPoint PointX="3.5729166666666665" PointY="20.125" />
+          <ConnectorPoint PointX="3.7395833333333335" PointY="20.125" />
+          <ConnectorPoint PointX="6.5" PointY="20.125" />
+          <ConnectorPoint PointX="6.5" PointY="20.5" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.Currency" Width="1.5" PointX="5.375" PointY="18.125" Height="1.4279589843750031" />
+        <InheritanceConnector EntityType="MISModel.Currency" ManuallyRouted="false" >
+          <ConnectorPoint PointX="3.5" PointY="18.7764794921875" />
+          <ConnectorPoint PointX="3.5729166666666665" PointY="18.7764794921875" />
+          <ConnectorPoint PointX="3.7395833333333335" PointY="18.7764794921875" />
+          <ConnectorPoint PointX="5.375" PointY="18.7764794921875" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.Curve" Width="1.5" PointX="1.5" PointY="20.5" Height="1.099264322916671" />
+        <InheritanceConnector EntityType="MISModel.Curve" ManuallyRouted="false" >
+          <ConnectorPoint PointX="2.25" PointY="19.427958984375003" />
+          <ConnectorPoint PointX="2.25" PointY="20.5" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.Index" Width="1.5" PointX="3.625" PointY="20.5" Height="1.2636116536458353" />
+        <InheritanceConnector EntityType="MISModel.Index" ManuallyRouted="false" >
+          <ConnectorPoint PointX="2.25" PointY="19.427958984375003" />
+          <ConnectorPoint PointX="2.25" PointY="20.125" />
+          <ConnectorPoint PointX="3.5729166666666665" PointY="20.125" />
+          <ConnectorPoint PointX="3.7395833333333335" PointY="20.125" />
+          <ConnectorPoint PointX="4.375" PointY="20.125" />
+          <ConnectorPoint PointX="4.375" PointY="20.5" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.Counterparty" Width="1.5" PointX="17.125" PointY="6.625" Height="1.0992643229166674" />
+        <InheritanceConnector EntityType="MISModel.Counterparty" ManuallyRouted="false">
+          <ConnectorPoint PointX="15.75" PointY="7.1746321614583337" />
+          <ConnectorPoint PointX="17.125" PointY="7.1746321614583337" />
+        </InheritanceConnector>
+        <AssociationConnector Association="MISModel.CounterpartyTrade">
+          <ConnectorPoint PointX="18.15625" PointY="7.7242643229166674" />
+          <ConnectorPoint PointX="18.15625" PointY="18.534880592548774" />
+          <ConnectorPoint PointX="16.875" PointY="18.534880592548774" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.IndexAsset">
+          <ConnectorPoint PointX="3.65625" PointY="20.5" />
+          <ConnectorPoint PointX="3.65625" PointY="17.506805826822916" />
+          <ConnectorPoint PointX="5.6354141666666671" PointY="17.506805826822916" />
+          <ConnectorPoint PointX="5.8020808333333331" PointY="17.506805826822916" />
+          <ConnectorPoint PointX="6.1510429166666674" PointY="17.506805826822916" />
+          <ConnectorPoint PointX="6.3177095833333334" PointY="17.506805826822916" />
+          <ConnectorPoint PointX="12.75" PointY="17.506805826822916" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.Calendar" Width="1.5" PointX="12.25" PointY="7.125" Height="1.4279589843749996" />
+        <AssociationConnector Association="MISModel.CalendarEntity">
+          <ConnectorPoint PointX="13.75" PointY="7.8389794921875" />
+          <ConnectorPoint PointX="14.25" PointY="7.8389794921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.CurrencyEntity">
+          <ConnectorPoint PointX="6.23437625" PointY="18.125" />
+          <ConnectorPoint PointX="6.23437625" PointY="6.65625" />
+          <ConnectorPoint PointX="6.5104141666666662" PointY="6.6562499999999991" />
+          <ConnectorPoint PointX="6.6770808333333322" PointY="6.65625" />
+          <ConnectorPoint PointX="6.916666666666667" PointY="6.6562499999999991" />
+          <ConnectorPoint PointX="7.083333333333333" PointY="6.65625" />
+          <ConnectorPoint PointX="14.25" PointY="6.65625" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.Collateral" Width="1.5" PointX="12.875" PointY="22.25" Height="1.099264322916671" />
+        <AssociationConnector Association="MISModel.TradeCollateral" ManuallyRouted="false">
+          <ConnectorPoint PointX="15.7187475" PointY="20.946432291666671" />
+          <ConnectorPoint PointX="15.7187475" PointY="22.799632161458334" />
+          <ConnectorPoint PointX="14.375" PointY="22.799632161458334" />
+        </AssociationConnector>
+        <InheritanceConnector EntityType="MISModel.Collateral" ManuallyRouted="false" >
+          <ConnectorPoint PointX="13.586109142734635" PointY="18.421000976562503" />
+          <ConnectorPoint PointX="13.586109142734635" PointY="21.875" />
+          <ConnectorPoint PointX="13.577712305717427" PointY="21.875" />
+          <ConnectorPoint PointX="13.577712305717427" PointY="22.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.Block" Width="1.5" PointX="22" PointY="18.875" Height="1.7566536458333353" />
+        <AssociationConnector Association="MISModel.PositionBlock">
+          <ConnectorPoint PointX="21.25" PointY="19.671153157552084" />
+          <ConnectorPoint PointX="22" PointY="19.671153157552084" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.CurrencyCurrency">
+          <ConnectorPoint PointX="5.9057593374399042" PointY="19.552958984375003" />
+          <ConnectorPoint PointX="5.9057593374399042" PointY="19.802958984375003" />
+          <ConnectorPoint PointX="6.3546806941105771" PointY="19.802958984375003" />
+          <ConnectorPoint PointX="6.3546806941105771" PointY="19.552958984375003" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.CurrencyHistory" Width="1.5" PointX="3.75" PointY="15.625" Height="1.2636116536458317" />
+        <AssociationConnector Association="MISModel.CurrencyCurrencyHistory">
+          <ConnectorPoint PointX="5.7187475" PointY="18.125" />
+          <ConnectorPoint PointX="5.7187475" PointY="16.256805826822916" />
+          <ConnectorPoint PointX="5.25" PointY="16.256805826822916" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.RepoTrade" Width="1.5" PointX="15.375" PointY="24.875" Height="0.93491699218750313" />
+        <InheritanceConnector EntityType="MISModel.RepoTrade" ManuallyRouted="false" >
+          <ConnectorPoint PointX="16.125" PointY="20.946432291666671" />
+          <ConnectorPoint PointX="16.125" PointY="24.875" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.SecurityTrade" Width="1.5" PointX="13.625" PointY="24.875" Height="0.93491699218750313" />
+        <InheritanceConnector EntityType="MISModel.SecurityTrade" ManuallyRouted="false" >
+          <ConnectorPoint PointX="16.125" PointY="20.946432291666671" />
+          <ConnectorPoint PointX="16.125" PointY="24.5" />
+          <ConnectorPoint PointX="14.375" PointY="24.5" />
+          <ConnectorPoint PointX="14.375" PointY="24.875" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.FutureTrade" Width="1.5" PointX="11.75" PointY="24.875" Height="0.93491699218750313" />
+        <InheritanceConnector EntityType="MISModel.FutureTrade" >
+          <ConnectorPoint PointX="16.125" PointY="20.946432291666671" />
+          <ConnectorPoint PointX="16.125" PointY="24.5" />
+          <ConnectorPoint PointX="12.5" PointY="24.5" />
+          <ConnectorPoint PointX="12.5" PointY="24.875" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="MISModel.Conglomerate" Width="1.5" PointX="14.125" PointY="3.625" Height="1.2636116536458335" />
+        <AssociationConnector Association="MISModel.ConglomerateEntity">
+          <ConnectorPoint PointX="14.9375" PointY="4.8886116536458335" />
+          <ConnectorPoint PointX="14.9375" PointY="6.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.BusinessUnit" Width="1.5" PointX="16.125" PointY="9.5" Height="1.2636116536458317" />
+        <AssociationConnector Association="MISModel.BusinessUnitBook">
+          <ConnectorPoint PointX="16.125" PointY="10.319305826822916" />
+          <ConnectorPoint PointX="15.75" PointY="10.319305826822916" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.CostCenter" Width="1.5" PointX="10.25" PointY="8.375" Height="1.0992643229166665" />
+        <AssociationConnector Association="MISModel.CostCenterBook">
+          <ConnectorPoint PointX="11" PointY="9.802958984375" />
+          <ConnectorPoint PointX="11" PointY="10.688549325358073" />
+          <ConnectorPoint PointX="14.25" PointY="10.688549325358073" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.EntityCostCenter">
+          <ConnectorPoint PointX="14.25" PointY="8.7219246419270817" />
+          <ConnectorPoint PointX="11.75" PointY="8.7219246419270817" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MISModel.Portfolio" Width="1.5" PointX="6.25" PointY="2.625" Height="1.4279589843749996" />
+        <AssociationConnector Association="MISModel.PortfolioBook">
+          <ConnectorPoint PointX="7" PointY="4.052958984375" />
+          <ConnectorPoint PointX="7" PointY="10.250522162679037" />
+          <ConnectorPoint PointX="10.916666666666666" PointY="10.250522162679037" />
+          <ConnectorPoint PointX="11.083333333333334" PointY="10.250522162679037" />
+          <ConnectorPoint PointX="14.25" PointY="10.250522162679037" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.PortfolioProduct">
+          <ConnectorPoint PointX="6.5937474999999992" PointY="4.052958984375" />
+          <ConnectorPoint PointX="6.5937474999999992" PointY="10.969796825358074" />
+          <ConnectorPoint PointX="6.3177095833333334" PointY="10.969796825358074" />
+          <ConnectorPoint PointX="6.1510429166666674" PointY="10.969796825358074" />
+          <ConnectorPoint PointX="2.5" PointY="10.969796825358074" />
+        </AssociationConnector>
+        <AssociationConnector Association="MISModel.BookTrade">
+          <ConnectorPoint PointX="15.5625" PointY="11.960348307291666" />
+          <ConnectorPoint PointX="15.5625" PointY="17.875" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
